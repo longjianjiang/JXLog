@@ -1,3 +1,3 @@
 # JXLog
 
-[![License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://img.shields.io/github/license/laichanwai/YFLog.svg) &nbsp; [![Support](https://img.shields.io/badge/support-iOS%208%2B%20-blue.svg?style=flat)](https://www.apple.com/nl/ios/) &nbsp; [![CI Status](https://travis-ci.org/laichanwai/YFLog.svg?branch=master)](https://travis-ci.org/laizw/YFLog) &nbsp; [![Pod](https://img.shields.io/cocoapods/v/YFLog.svg?style=flat)](https://img.shields.io/cocoapods/v/YFLog.svg?style=flat)
+[![CI Status](https://travis-ci.org/longjianjiang/JXLog.svg?branch=master)](https://travis-ci.org/longjianjiang/JXLog) 
