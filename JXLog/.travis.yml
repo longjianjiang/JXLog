@@ -1,0 +1,2 @@
+language: objective-c
+script: xcodebuild -project JXLog.xcodeproj -scheme JXLogTests -destination 'platform=iOS Simulator,name=iPhone SE' test
