@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		784B5B9921017EF5001B397A /* JXFileLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 784B5B9721017EF5001B397A /* JXFileLogger.h */; };
+		784B5B9A21017EF5001B397A /* JXFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 784B5B9821017EF5001B397A /* JXFileLogger.m */; };
 		FB4895152100D11E004623C1 /* JXLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB48950B2100D11D004623C1 /* JXLog.framework */; };
 		FB48951A2100D11E004623C1 /* JXLogTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FB4895192100D11E004623C1 /* JXLogTests.m */; };
 		FB48951C2100D11E004623C1 /* JXLog.h in Headers */ = {isa = PBXBuildFile; fileRef = FB48950E2100D11D004623C1 /* JXLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -25,6 +27,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		784B5B9721017EF5001B397A /* JXFileLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXFileLogger.h; sourceTree = "<group>"; };
+		784B5B9821017EF5001B397A /* JXFileLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXFileLogger.m; sourceTree = "<group>"; };
 		FB48950B2100D11D004623C1 /* JXLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JXLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB48950E2100D11D004623C1 /* JXLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXLog.h; sourceTree = "<group>"; };
 		FB48950F2100D11D004623C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -79,6 +83,8 @@
 				FB48950F2100D11D004623C1 /* Info.plist */,
 				FB4895252100D12D004623C1 /* JXLogger.h */,
 				FB4895262100D12D004623C1 /* JXLogger.m */,
+				784B5B9721017EF5001B397A /* JXFileLogger.h */,
+				784B5B9821017EF5001B397A /* JXFileLogger.m */,
 			);
 			path = JXLog;
 			sourceTree = "<group>";
@@ -100,6 +106,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB4895272100D12D004623C1 /* JXLogger.h in Headers */,
+				784B5B9921017EF5001B397A /* JXFileLogger.h in Headers */,
 				FB48951C2100D11E004623C1 /* JXLog.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -201,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB4895282100D12D004623C1 /* JXLogger.m in Sources */,
+				784B5B9A21017EF5001B397A /* JXFileLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
