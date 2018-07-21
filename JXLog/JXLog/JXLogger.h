@@ -22,15 +22,50 @@ typedef NS_ENUM(NSUInteger, JXLoggerLevel) {
 
 @interface JXLogger : NSObject
 
+/**
+ get a default domain logger and it's log level is JXLoggerLevelAll
+ */
 + (instancetype)logger;
 
+/**
+ get a logger with specified  domain
+ */
 + (id)loggerWithDomain:(NSString *)domain;
+
+/**
+ add a logger with a specified domain
+ */
 + (void)addLoggerWithDomain:(NSString *)domain;
+
+/**
+ remove a logger with a specified domain
+ */
 + (void)removeLoggerWithDomain:(NSString *)domain;
 
+/**
+ set log level
+
+ @param enable if YES then log level is JXLoggerLevelAll, otherwise log level is JXLoggerLevelOff
+ */
 - (void)setAllLogsEnable:(BOOL)enable;
+
+/**
+ set log level mask, use | operator combine multipe log level
+ */
 - (void)setLoggerLevelMask:(JXLoggerLevel)mask;
-- (void)setLogSavePath:(NSString *)path;
+
+/**
+ save log message as a .log file to sandbox
+
+ @param directory save .log file directory
+ */
+- (void)setLogSaveDirectory:(NSString *)directory;
+
+/**
+ get .log file path
+ */
+- (NSString *)getLogSavePath;
+
 
 /**
  log method

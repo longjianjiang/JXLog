@@ -7,12 +7,16 @@
 //
 
 #import "JXLogger.h"
+#import "JXFileLogger.h"
+
 NSString * const JXLoggerDefaultDomain = @"JXLogger";
 
 @interface JXLogger()
 
 @property (nonatomic, copy) NSString *domain;
 @property (nonatomic, assign) JXLoggerLevel levelMask;
+
+@property (nonatomic, strong) JXFileLogger *fileLoger;
 
 @end
 
@@ -67,10 +71,13 @@ NSString * const JXLoggerDefaultDomain = @"JXLogger";
 
 
 #pragma mark - instance method
-- (void)setLogSavePath:(NSString *)path {
-#warning to do save log file to path
+- (void)setLogSaveDirectory:(NSString *)directory {
+    self.fileLoger = [[JXFileLogger alloc] initWithLogsDiretroy:directory];
 }
 
+- (NSString *)getLogSavePath {
+    return self.fileLoger.logsSavePath;
+}
 
 - (void)setAllLogsEnable:(BOOL)enable {
     [self setLoggerLevelMask:enable ? JXLoggerLevelAll : JXLoggerLevelOff];
@@ -91,13 +98,20 @@ NSString * const JXLoggerDefaultDomain = @"JXLogger";
             prefix = @"⚠️";
             break;
         default:
-            prefix = @"  ";
+            prefix = @"💚";
             break;
     }
     
     if (!message) message = @"";
     
-    fprintf(stderr, "%s %s <%s> %d %s  %s\n", [[self.formatter stringFromDate:[NSDate date]] UTF8String], prefix.UTF8String, file, line, func, message.UTF8String);
+    NSString *logContent = [NSString stringWithFormat:@"%@ %@ <%@> %d %@  %@\n", [self.formatter stringFromDate:[NSDate date]], prefix, [NSString stringWithUTF8String:file], line, [NSString stringWithUTF8String:func], message];
+    
+    fprintf(stderr, "%s", logContent.UTF8String);
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [self.fileLoger logMessage:logContent];
+    });
+    
 }
 
 #pragma mark - getter and setter

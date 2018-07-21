@@ -12,6 +12,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JXFileLogger : NSObject
 
+- (instancetype)initWithLogsDiretroy:(NSString *)logsDirectory;
+
+- (void)logMessage:(NSString *)logMessage;
+
+
+@property (nonatomic, readonly, copy) NSString *logsSavePath;
+@property (atomic, assign) unsigned long long logFilesDiskQuota;
+
 @end
 
 NS_ASSUME_NONNULL_END
