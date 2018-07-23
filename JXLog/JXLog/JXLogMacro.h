@@ -9,12 +9,12 @@
 #ifndef JXLogMacro_h
 #define JXLogMacro_h
 
-#import "JXLogger.h"
+#import "JXConsoleLogger.h"
 
 #define FILE_NAME (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__)
 
 #define JXLog(__domain__, __level__, __frmt__, ...) \
-[JXLogger logDomain:__domain__                      \
+[JXConsoleLogger logDomain:__domain__                      \
 fileName:FILE_NAME                          \
 functionName:__func__                       \
 line:__LINE__                               \

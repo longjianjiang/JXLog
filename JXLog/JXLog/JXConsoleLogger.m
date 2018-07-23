@@ -1,17 +1,17 @@
 //
-//  JXLogger.m
+//  JXConsoleLogger.m
 //  JXLog
 //
-//  Created by longjianjiang on 2018/7/19.
-//  Copyright © 2018 Jiang. All rights reserved.
+//  Created by zl on 2018/7/23.
+//  Copyright © 2018年 Jiang. All rights reserved.
 //
 
-#import "JXLogger.h"
+#import "JXConsoleLogger.h"
 #import "JXFileLogger.h"
 
 NSString * const JXLoggerDefaultDomain = @"JXLogger";
 
-@interface JXLogger()
+@interface JXConsoleLogger ()
 
 @property (nonatomic, copy) NSString *domain;
 @property (nonatomic, assign) JXLoggerLevel levelMask;
@@ -21,11 +21,11 @@ NSString * const JXLoggerDefaultDomain = @"JXLogger";
 @end
 
 
-@implementation JXLogger
+@implementation JXConsoleLogger
 
 + (void)load {
     [self addLoggerWithDomain:JXLoggerDefaultDomain];
-    [[JXLogger logger] setLoggerLevelMask:JXLoggerLevelAll];
+    [[JXConsoleLogger logger] setLoggerLevelMask:JXLoggerLevelAll];
 }
 
 #pragma mark - class method
@@ -38,9 +38,9 @@ NSString * const JXLoggerDefaultDomain = @"JXLogger";
 }
 
 + (void)addLoggerWithDomain:(NSString *)domain {
-    JXLogger *logger = [self loggerWithDomain:domain];
+    JXConsoleLogger *logger = [self loggerWithDomain:domain];
     if (!logger) {
-        logger = [JXLogger new];
+        logger = [JXConsoleLogger new];
         logger.domain = domain;
         [logger setAllLogsEnable:YES];
         self.loggers[domain] = logger;
@@ -54,10 +54,10 @@ NSString * const JXLoggerDefaultDomain = @"JXLogger";
 }
 
 + (void)logDomain:(NSString *)domain fileName:(const char *)fileName functionName:(const char *)functionName line:(const int)line level:(JXLoggerLevel)level format:(NSString *)format, ... {
-    JXLogger *logger = [self loggerWithDomain:domain];
+    JXConsoleLogger *logger = [self loggerWithDomain:domain];
     if (!logger) return;
     if (!(level & logger.levelMask)) return;
-
+    
     NSString *logContent;
     if (format) {
         va_list args;
@@ -65,7 +65,7 @@ NSString * const JXLoggerDefaultDomain = @"JXLogger";
         logContent = [[NSString alloc] initWithFormat:format arguments:args];
         va_end(args);
     }
-
+    
     [logger logLevel:level file:fileName func:functionName line:line message:logContent];
 }
 
@@ -139,6 +139,5 @@ NSString * const JXLoggerDefaultDomain = @"JXLogger";
     });
     return formatter;
 }
-
 
 @end

@@ -1,12 +1,14 @@
 //
-//  JXLogger.h
+//  JXConsoleLogger.h
 //  JXLog
 //
-//  Created by longjianjiang on 2018/7/19.
-//  Copyright © 2018 Jiang. All rights reserved.
+//  Created by zl on 2018/7/23.
+//  Copyright © 2018年 Jiang. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+
+
 
 extern NSString * const JXLoggerDefaultDomain;
 
@@ -20,7 +22,8 @@ typedef NS_ENUM(NSUInteger, JXLoggerLevel) {
     JXLoggerLevelAll        = NSUIntegerMax
 };
 
-@interface JXLogger : NSObject
+@interface JXConsoleLogger : NSObject
+
 
 /**
  get a default domain logger and it's log level is JXLoggerLevelAll
@@ -44,7 +47,7 @@ typedef NS_ENUM(NSUInteger, JXLoggerLevel) {
 
 /**
  set log level
-
+ 
  @param enable if YES then log level is JXLoggerLevelAll, otherwise log level is JXLoggerLevelOff
  */
 - (void)setAllLogsEnable:(BOOL)enable;
@@ -56,7 +59,7 @@ typedef NS_ENUM(NSUInteger, JXLoggerLevel) {
 
 /**
  save log message as a .log file to sandbox
-
+ 
  @param directory save .log file directory
  @param logFilesDiskQuota .log file disk quota
  */
@@ -69,7 +72,7 @@ typedef NS_ENUM(NSUInteger, JXLoggerLevel) {
 
 /**
  log method
-
+ 
  @param domain logger domain
  @param fileName __FILE__
  @param functionName __func__
@@ -78,4 +81,6 @@ typedef NS_ENUM(NSUInteger, JXLoggerLevel) {
  @param format log message
  */
 + (void)logDomain:(NSString *)domain fileName:(const char *)fileName functionName:(const char *)functionName line:(const int)line level:(JXLoggerLevel)level format:(NSString *)format, ...;
+
 @end
+
