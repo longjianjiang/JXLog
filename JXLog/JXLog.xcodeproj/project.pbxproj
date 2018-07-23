@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		784B5B9921017EF5001B397A /* JXFileLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 784B5B9721017EF5001B397A /* JXFileLogger.h */; };
+		7815805C21056B6D00B397E6 /* JXLogMacro.h in Headers */ = {isa = PBXBuildFile; fileRef = 7815805B21056B6D00B397E6 /* JXLogMacro.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		784B5B9921017EF5001B397A /* JXFileLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 784B5B9721017EF5001B397A /* JXFileLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		784B5B9A21017EF5001B397A /* JXFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 784B5B9821017EF5001B397A /* JXFileLogger.m */; };
 		784B5C262102E01B001B397A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 784B5C252102E01B001B397A /* AppDelegate.m */; };
 		784B5C292102E01B001B397A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 784B5C282102E01B001B397A /* ViewController.m */; };
@@ -21,7 +22,7 @@
 		FB4895152100D11E004623C1 /* JXLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB48950B2100D11D004623C1 /* JXLog.framework */; };
 		FB48951A2100D11E004623C1 /* JXLogTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FB4895192100D11E004623C1 /* JXLogTests.m */; };
 		FB48951C2100D11E004623C1 /* JXLog.h in Headers */ = {isa = PBXBuildFile; fileRef = FB48950E2100D11D004623C1 /* JXLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FB4895272100D12D004623C1 /* JXLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = FB4895252100D12D004623C1 /* JXLogger.h */; };
+		FB4895272100D12D004623C1 /* JXLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = FB4895252100D12D004623C1 /* JXLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FB4895282100D12D004623C1 /* JXLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FB4895262100D12D004623C1 /* JXLogger.m */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7815805B21056B6D00B397E6 /* JXLogMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXLogMacro.h; sourceTree = "<group>"; };
 		784B5B9721017EF5001B397A /* JXFileLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXFileLogger.h; sourceTree = "<group>"; };
 		784B5B9821017EF5001B397A /* JXFileLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXFileLogger.m; sourceTree = "<group>"; };
 		784B5C222102E01B001B397A /* JXLogSaveDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JXLogSaveDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,6 +157,7 @@
 				FB4895262100D12D004623C1 /* JXLogger.m */,
 				784B5B9721017EF5001B397A /* JXFileLogger.h */,
 				784B5B9821017EF5001B397A /* JXFileLogger.m */,
+				7815805B21056B6D00B397E6 /* JXLogMacro.h */,
 			);
 			path = JXLog;
 			sourceTree = "<group>";
@@ -175,9 +178,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7815805C21056B6D00B397E6 /* JXLogMacro.h in Headers */,
 				FB4895272100D12D004623C1 /* JXLogger.h in Headers */,
-				784B5B9921017EF5001B397A /* JXFileLogger.h in Headers */,
 				FB48951C2100D11E004623C1 /* JXLog.h in Headers */,
+				784B5B9921017EF5001B397A /* JXFileLogger.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,7 +378,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 74MF5V7Z8J;
 				INFOPLIST_FILE = JXLogSaveDemo/Info.plist;
@@ -395,7 +399,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 74MF5V7Z8J;
 				INFOPLIST_FILE = JXLogSaveDemo/Info.plist;
@@ -530,7 +534,7 @@
 		FB4895202100D11E004623C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -556,7 +560,7 @@
 		FB4895212100D11E004623C1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;

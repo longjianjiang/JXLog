@@ -58,14 +58,14 @@ typedef NS_ENUM(NSUInteger, JXLoggerLevel) {
  save log message as a .log file to sandbox
 
  @param directory save .log file directory
+ @param logFilesDiskQuota .log file disk quota
  */
-- (void)setLogSaveDirectory:(NSString *)directory;
+- (void)setLogSaveDirectory:(NSString *)directory logFilesDiskQuota:(long long)logFilesDiskQuota;
 
 /**
  get .log file path
  */
 - (NSString *)getLogSavePath;
-
 
 /**
  log method

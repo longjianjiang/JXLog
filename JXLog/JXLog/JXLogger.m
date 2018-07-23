@@ -71,8 +71,12 @@ NSString * const JXLoggerDefaultDomain = @"JXLogger";
 
 
 #pragma mark - instance method
-- (void)setLogSaveDirectory:(NSString *)directory {
+- (void)setLogSaveDirectory:(NSString *)directory logFilesDiskQuota:(long long)logFilesDiskQuota {
     self.fileLoger = [[JXFileLogger alloc] initWithLogsDiretroy:directory];
+    
+    if (logFilesDiskQuota > 0) {
+        self.fileLoger.logFilesDiskQuota = logFilesDiskQuota;
+    }
 }
 
 - (NSString *)getLogSavePath {
@@ -108,9 +112,12 @@ NSString * const JXLoggerDefaultDomain = @"JXLogger";
     
     fprintf(stderr, "%s", logContent.UTF8String);
     
+#ifdef DEBUG
+#else
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [self.fileLoger logMessage:logContent];
     });
+#endif
     
 }
 

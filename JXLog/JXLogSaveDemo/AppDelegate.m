@@ -19,7 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSString *logSaveDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    [[JXLogger logger] setLogSaveDirectory:logSaveDirectory];
+    [[JXLogger logger] setLogSaveDirectory:logSaveDirectory logFilesDiskQuota:5 * 1024];
     
     return YES;
 }
