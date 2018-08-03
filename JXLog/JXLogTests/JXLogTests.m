@@ -25,6 +25,8 @@
 }
 
 - (void)testLogLevel {
+    
+     [[JXConsoleLogger logger] setLoggerLevelMask:JXLoggerLevelWarning | JXLoggerLevelError];
     JXLogDebug(@"👇 JXLog have five log level 👇");
     JXLogError(@"JXLoggerLevelError");
     JXLogWarning(@"JXLoggerLevelWarning");
@@ -38,16 +40,16 @@
     JXLogDebug(@"测试 Log 控制");
     JXLogVerbose(@"测试 开关 控制，默认开启");
     for (int i = 0; i < 10; i++) {
-        if (i == 5) [[JXLogger logger] setAllLogsEnable:NO];
+        if (i == 5) [[JXConsoleLogger logger] setAllLogsEnable:NO];
         JXLogInfo(@"第 %d", i);
     }
-    [[JXLogger logger] setAllLogsEnable:YES];
+    [[JXConsoleLogger logger] setAllLogsEnable:YES];
     JXLogError(@"可以看到上面的 Log 信息中只有前 5 个，后面因为打印开关关闭而停止了 log");
 }
 
 - (void)testDomainLog {
     NSString *domain = @"JXTestDomain";
-    [JXLogger addLoggerWithDomain:domain];
+    [JXConsoleLogger addLoggerWithDomain:domain];
     JXFlagError(domain, @"这是一个高级用法，可以控制是否打印方法，并且需要绑定一个 domain");
     JXFlagWarning(domain, @"如果 domain 没有绑定，那么使用该 domain 的 Log 信息是不会输出的");
     JXFlagDebug(domain, @"目前的 domain 是: %@", domain);

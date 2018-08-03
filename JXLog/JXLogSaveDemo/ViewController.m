@@ -10,7 +10,7 @@
 #import "CTPersistanceAsyncExecutor.h"
 #import <JXLog/JXLog.h>
 
-#define COUNT 10
+#define COUNT 20
 
 @interface ViewController ()
 

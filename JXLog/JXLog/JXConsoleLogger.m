@@ -112,12 +112,9 @@ NSString * const JXLoggerDefaultDomain = @"JXLogger";
     
     fprintf(stderr, "%s", logContent.UTF8String);
     
-#ifdef DEBUG
-#else
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [self.fileLoger logMessage:logContent];
     });
-#endif
     
 }
 
