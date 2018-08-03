@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'JXLog'
-  s.version          = '0.0.2'
+  s.version          = '0.0.3'
   s.summary          = 'A Log Component'
   s.homepage         = 'https://github.com/longjianjiang/JXLog'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
