@@ -8,5 +8,5 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/longjianjiang/JXLog.git', :tag => s.version }
 
   s.ios.deployment_target = '8.0'
-  s.source_files = 'JXLog', 'JXLog/JXLog/**/*.{h,m}'
+  s.source_files = 'JXLog/**/*.{h,m}'
 end
