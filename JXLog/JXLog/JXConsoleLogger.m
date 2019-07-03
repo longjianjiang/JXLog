@@ -69,6 +69,20 @@ NSString * const JXLoggerDefaultDomain = @"JXLogger";
     [logger logLevel:level file:fileName func:functionName line:line message:logContent];
 }
 
+#pragma mark - init method
+static dispatch_once_t onceToken;
+static uint8_t dispatchSpecificKey = 0;
+static uint8_t dispatchSpecificContext = 0;
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        dispatch_once(&onceToken, ^{
+            dispatch_queue_set_specific(dispatch_get_main_queue(), &dispatchSpecificKey, &dispatchSpecificContext, NULL);
+        });
+    }
+    return self;
+}
 
 #pragma mark - instance method
 - (void)setLogSaveDirectory:(NSString *)directory logFilesDiskQuota:(long long)logFilesDiskQuota {
@@ -112,22 +126,26 @@ NSString * const JXLoggerDefaultDomain = @"JXLogger";
     
     fprintf(stderr, "%s", logContent.UTF8String);
     
-    if ([self isUserDeviceHasFreeStorage] == NO) {
+    if ([self hasFreeDiskSpace] == NO) {
         return;
     }
-    
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+
+    if (dispatch_get_specific(&dispatchSpecificKey) == &dispatchSpecificContext) {
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            [self.fileLoger logMessage:logContent];
+        });
+    } else {
         [self.fileLoger logMessage:logContent];
-    });
-    
+    }
 }
 
-- (BOOL)isUserDeviceHasFreeStorage {
-    uint64_t freeStroage = [self getFreeDiskspace];
-    
-    if (freeStroage < 1024 * 1024) {
-        return NO;
-    }
+- (BOOL)hasFreeDiskSpace {
+    NSError *error = nil;
+    NSDictionary *attrs = [[NSFileManager defaultManager] attributesOfFileSystemForPath:NSHomeDirectory() error:&error];
+    if (error) { return NO; }
+    long long space = [[attrs objectForKey:NSFileSystemFreeSize] longLongValue];
+    if (space < 0) { return NO; }
+    if (space < self.fileLoger.logFilesDiskQuota) { return NO; }
     return YES;
 }
 
@@ -149,22 +167,4 @@ NSString * const JXLoggerDefaultDomain = @"JXLogger";
     });
     return formatter;
 }
-
-- (uint64_t)getFreeDiskspace {
-    uint64_t totalSpace = 0;
-    uint64_t totalFreeSpace = 0;
-    NSError *error = nil;
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSDictionary *dictionary = [[NSFileManager defaultManager] attributesOfFileSystemForPath:[paths lastObject] error: &error];
-    
-    if (dictionary) {
-        NSNumber *fileSystemSizeInBytes = [dictionary objectForKey: NSFileSystemSize];
-        NSNumber *freeFileSystemSizeInBytes = [dictionary objectForKey:NSFileSystemFreeSize];
-        totalSpace = [fileSystemSizeInBytes unsignedLongLongValue];
-        totalFreeSpace = [freeFileSystemSizeInBytes unsignedLongLongValue];
-    }
-    
-    return totalFreeSpace;
-}
-
 @end

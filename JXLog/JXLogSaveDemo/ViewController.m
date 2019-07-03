@@ -41,9 +41,6 @@
             JXLogDebug(@"write debug %d",count);
         }
     }];
-    
-//    NSMutableArray *arr = [NSMutableArray array];
-//    [arr removeObjectAtIndex:0];
 }
 
 
